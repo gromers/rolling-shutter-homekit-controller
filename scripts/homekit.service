@@ -1,0 +1,12 @@
+[Unit]
+Description=Exposes the Homekit interface for the controller
+After=controller.service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=3
+ExecStart=/usr/bin/nodejs /home/pi/rolling-shutter-controller/homekit
+
+[Install]
+WantedBy=multi-user.target

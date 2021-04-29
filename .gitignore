@@ -1,0 +1,11 @@
+# No log folders
+src/homekit-plugin/logs/
+
+# No node packages
+src/homekit-plugin/node_modules/
+
+# Persist should be generated for each pi
+src/homekit-plugin/persist/
+
+# Prevent compiled python in the repo
+src/controller/*.pyc
