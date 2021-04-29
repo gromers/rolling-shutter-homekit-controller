@@ -58,6 +58,7 @@ class Controller:
         self.directionRelay.off()
 
         # make sure the position repo has the last state
+        print('writing new position {0}'.format(targetPosition))
         self.positionRepository.write(targetPosition)
 
         # invoke callback for the interested parties

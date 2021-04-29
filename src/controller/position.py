@@ -1,22 +1,17 @@
 import constants
-import sqlite3
-from sqlite3 import Error
 
 # Does the persisting of the current state
 class PositionRepository:
 
-    def __init__(self):
-        self.currentPosition = -1
-        self.currentPosition = self.read()
-
     def read(self):
-        if self.currentPosition == -1:
-            return 100
-        else:
-            return self.currentPosition
+        position = -1
+        with open('actual.position', 'r') as reader:
+            position = int(reader.readline())
+        return position
 
     def write(self, position):
-        self.currentPosition = position
+        with open('actual.position', 'w') as writer:
+            writer.write("{0}".format(position))
         return True
 
     # The idea is to do the persistion towards the database. 

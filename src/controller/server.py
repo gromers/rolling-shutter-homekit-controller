@@ -22,6 +22,7 @@ class Server:
             else:
                 print("callback wasn't set. Stopping the connection..")
                 connection.close()
+            raise Exception('stopping server for restart')
 
     def __createServerSocket(self):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
