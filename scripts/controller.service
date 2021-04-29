@@ -5,7 +5,7 @@ Description=Service to controll the relay board
 Type=simple
 Restart=always
 RestartSec=3
-ExecStart=/usr/bin/python /home/pi/rolling-shutter-controller/controller
+ExecStart=/usr/bin/python /home/pi/rolling-shutter-controller/controller/app.py
 
 [Install]
 WantedBy=multi-user.target
