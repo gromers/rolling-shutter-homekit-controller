@@ -18,7 +18,7 @@ class Homekit {
     this.windowCoveringService.getCharacteristic(Characteristic.TargetPosition).setValue(100);
 
     this.name = 'shutter - 33';
-    this.position = 33;
+    this.position = 100;
     this.state = true;
 
     this.bus = bus;
@@ -70,61 +70,3 @@ class Homekit {
 }
 
 module.exports.Homekit = Homekit;
-
-// onCharacteristic.on(CharacteristicEventTypes.GET, (callback) => {
-//   logger.info(`on.GET (${state})`);
-//   callback(undefined, false);
-// });
-// onCharacteristic.on(CharacteristicEventTypes.SET, (value, callback) => {
-//   logger.info(`on.SET: ${value}`); state = value;
-//   callback();
-// });
-// // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-// let name = 'Roller Shutter - Front';
-// nameCharacteristic.on(CharacteristicEventTypes.GET, (callback) => {
-//   logger.info(`name.GET (${name})`);
-//   callback(undefined, name);
-// });
-// nameCharacteristic.on(CharacteristicEventTypes.SET, (value, callback) => {
-//   logger.info(`name.SET ${value}`); name = value;
-//   callback();
-// });
-// // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-// let position = 100;
-// currentPositionCharacteristic.on(CharacteristicEventTypes.GET, (callback) => {
-//   logger.info(`currentPosition.GET (${position})`);
-//   callback(undefined, position);
-// });
-// currentPositionCharacteristic.on(CharacteristicEventTypes.SET, (value, callback) => {
-//   logger.info(`currentPosition.SET (${value})`); position = value;
-//   callback();
-// });
-// // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-// let targetPosition = 100;
-// targetPositionCharacteristic.on(CharacteristicEventTypes.GET, (callback) => {
-//   logger.info(`targetPosition.GET (${targetPosition})`);
-//   callback(undefined, targetPosition);
-// });
-// targetPositionCharacteristic.on(CharacteristicEventTypes.SET, (value, callback) => {
-//   logger.info(`targetPosition.SET = ${value}`);
-
-//   targetPosition = value;
-
-//   try {
-//     if (client) {
-//       const payload = {
-//         type: 'target_position',
-//         value: targetPosition,
-//       };
-//       client.write(JSON.stringify(payload));
-//     }
-//   } catch {
-//     // do nothing yet
-//   }
-
-//   callback();
-// });
-// // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
