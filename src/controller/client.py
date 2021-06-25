@@ -21,7 +21,8 @@ class Client:
                     # messages are verified in the parse method. we can directly get to work 
                     for message in self.__parse_incoming(stringData):
                         
-                        print ("processing message: '{0}'".format(message))
+                        print ("processing message : '{0}'".format(message))
+                        print ("type               : '{0}'".format(message['type']))
 
                         # Find out what the client wanted and honorate it
                         if message['type'] == "sync_position":
@@ -38,7 +39,7 @@ class Client:
         except ValueError:
             print("Invalid json received. Ignoring the message")
         except:
-            print("Unkonwn error (certainly not a value error)")
+            print("Unexpected error (but certainly not a value error):", sys.exc_info()[0])
             self.connection.close()
     
     # This method parses the incoming data blob. first a split is done on newline, then it is checked whether the part is a 
