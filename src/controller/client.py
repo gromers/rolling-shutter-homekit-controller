@@ -17,20 +17,18 @@ class Client:
                 print ("received: \n----\n{0}\n------".format(data))
                 if data:
                     stringData = data.decode('utf-8')
+
+                    # messages are verified in the parse method. we can directly get to work 
                     for jsonMessage in self.__parse_incoming(stringData):
-                        try:
-                            message = json.loads(jsonMessage)
-                        except ValueError:
-                            print("Invalid json received '{0}'. Ignoring the message".format(jsonMessage))
-                            continue
                         
-                        # Perform the received request
+                        # Find out what the client wanted and honorate it
                         if message['type'] == "sync_position":
                             self.__send_message("sync_position", self.controller.currentPosition())
                         elif message['type'] == "target_position":
                             self.controller.adjust(message['value'], self)
                         else:
                             self.__send_message("unknown_type", message['type'])
+                            
                 else:
                     print ("no more data from client")
                     self.connection.close()
@@ -54,9 +52,9 @@ class Client:
             try:
                 message = json.loads(stringDataPart)
                 if message['type'] == "target_position":
-                    last_target_position = stringDataPart
+                    last_target_position = message
                 else:
-                    messages.append(stringDataPart)
+                    messages.append(message)
             except ValueError:
                 print("Invalid json received '{0}'. Ignoring the message".format(message))
                 continue
