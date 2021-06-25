@@ -1,5 +1,6 @@
 import socket
 import json
+import sys
 
 # This class should only handle incoming traffic. Moving this code into a different class feels 
 # like overkill at the moment. however if this process commands keeps growing further a separate
