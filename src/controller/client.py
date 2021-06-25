@@ -21,6 +21,8 @@ class Client:
                     # messages are verified in the parse method. we can directly get to work 
                     for message in self.__parse_incoming(stringData):
                         
+                        print ("processing message: '{0}'".format(message))
+
                         # Find out what the client wanted and honorate it
                         if message['type'] == "sync_position":
                             self.__send_message("sync_position", self.controller.currentPosition())
@@ -56,6 +58,9 @@ class Client:
                 else:
                     messages.append(message)
             except ValueError:
+                print("Invalid json received '{0}'. Ignoring the message".format(message))
+                continue
+            except:
                 print("Invalid json received '{0}'. Ignoring the message".format(message))
                 continue
 
