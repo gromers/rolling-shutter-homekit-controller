@@ -20,7 +20,7 @@ class Controller:
             self.isAdjusting = True
 
         shouldOpen = self.__should_open(currentPosition, targetPosition)
-        if (shouldOpen == Fasle):
+        if (shouldOpen == False):
             self.directionRelay.on()
         
         duration = self.__calculate_movement_duration(currentPosition, targetPosition)

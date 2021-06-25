@@ -16,13 +16,15 @@ class Server:
         while True:
             print("waiting for a connection..")
             connection, client_address = self.socket.accept()
+
             print ("connection from {0}".format(client_address))
             if self.__callbackHandler != None:
                 self.__callbackHandler.handle(connection)
             else:
                 print("callback wasn't set. Stopping the connection..")
                 connection.close()
-            raise Exception('stopping server for restart')
+            
+            # raise Exception('stopping server for restart')
 
     def __createServerSocket(self):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
