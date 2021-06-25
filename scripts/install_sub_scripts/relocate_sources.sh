@@ -4,10 +4,6 @@
 # stopped, when all is stopped, we copy the latest version from the workspace into
 # our execution directory. After that, we start the services again.
 
-# 0. print the state
-sudo systemctl status controller.service
-sudo systemctl status homekit.service
-
 # 1. find out if we have a services directory. if not, create that directory
 if [ -d "/home/pi/rolling-shutter-controller" ]
 then
@@ -16,7 +12,7 @@ then
   read homekit_answer
   if [ "$homekit_answer" != "${homekit_answer#[Yy]}" ]
   then
-        /bin/cp -rf /home/pi/Desktop/workspace/rolling-shutter-homekit-controller/src/homekit-plugin/* /home/pi/rolling-shutter-controller/homekit
+    /bin/cp -rf /home/pi/Desktop/workspace/rolling-shutter-homekit-controller/src/homekit-plugin/* /home/pi/rolling-shutter-controller/homekit
   fi
   echo "Do you want to update the controller (y/n)?"
   read controller_answer
@@ -33,9 +29,3 @@ else
   cp /home/pi/Desktop/workspace/rolling-shutter-homekit-controller/src/controller/*.py /home/pi/rolling-shutter-controller/controller
   cp /home/pi/Desktop/workspace/rolling-shutter-homekit-controller/src/homekit-plugin/* /home/pi/rolling-shutter-controller/homekit
 fi
-
-# 1. print the current state
-sudo systemctl status controller.service
-sudo systemctl status homekit.service
-
-# 2. stop both of them
