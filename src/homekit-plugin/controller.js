@@ -11,7 +11,7 @@ class Controller {
     this.bus = bus;
     this.bus.on('new_target_position', (value) => {
       if (this.client) {
-        const payload = { type: 'target_position', value: value };
+        const payload = { type: 'target_position', value };
         this.client.write(`${JSON.stringify(payload)}\n`);
       }
     });

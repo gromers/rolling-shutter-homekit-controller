@@ -15,7 +15,7 @@ class Homekit {
     this.accessory = new Accessory('Roller Shutter', accessoryUuid);
     this.windowCoveringService = new Service.WindowCovering('Roller Shutter');
     
-    this.name = 'shutter - 33';
+    this.name = config.defaultName;
     this.position = 100;
     this.state = true;
 

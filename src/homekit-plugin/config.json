@@ -1,5 +1,6 @@
 {
-    "username": "6c:40:08:ae:53:44",
-    "pin": "876-54-320",
-    "port": 51433
+    "username": "6c:40:08:aa:aa:aa",
+    "pin": "111-11-111",
+    "port": 51433,
+    "defaultName": "default"
 }
