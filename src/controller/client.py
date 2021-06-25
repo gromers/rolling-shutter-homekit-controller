@@ -19,7 +19,7 @@ class Client:
                     stringData = data.decode('utf-8')
 
                     # messages are verified in the parse method. we can directly get to work 
-                    for jsonMessage in self.__parse_incoming(stringData):
+                    for message in self.__parse_incoming(stringData):
                         
                         # Find out what the client wanted and honorate it
                         if message['type'] == "sync_position":
@@ -28,7 +28,7 @@ class Client:
                             self.controller.adjust(message['value'], self)
                         else:
                             self.__send_message("unknown_type", message['type'])
-                            
+
                 else:
                     print ("no more data from client")
                     self.connection.close()
