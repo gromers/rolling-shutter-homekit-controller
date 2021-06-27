@@ -53,7 +53,7 @@ class Homekit {
         callback(undefined, this.position);
       })
       .on(CharacteristicEventTypes.SET, (value, callback) => {
-        this.state = value < this.position;
+        this.state = value > this.position;
         this.bus.emit('new_target_position', value);
         callback();
       });
