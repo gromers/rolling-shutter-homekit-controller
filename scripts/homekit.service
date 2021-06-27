@@ -7,6 +7,7 @@ Type=simple
 Restart=always
 RestartSec=3
 ExecStart=/usr/bin/nodejs /home/pi/rolling-shutter-controller/homekit/app.js
+WorkingDirectory=/home/pi/rolling-shutter-controller/homekit
 
 [Install]
 WantedBy=multi-user.target

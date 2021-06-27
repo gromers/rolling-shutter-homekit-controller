@@ -6,6 +6,7 @@ Type=simple
 Restart=always
 RestartSec=3
 ExecStart=/usr/bin/python /home/pi/rolling-shutter-controller/controller/app.py
+WorkingDirectory=/home/pi/rolling-shutter-controller/controller
 
 [Install]
 WantedBy=multi-user.target
