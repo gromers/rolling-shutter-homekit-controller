@@ -22,7 +22,7 @@ sudo rm /etc/systemd/system/homekit.service
 sudo rm /etc/systemd/system/controller.service
 
 # removing the dump from the users root 
-rm -rf /home/pi/rolling-shutter-controller
+sudo rm -rf /home/pi/rolling-shutter-controller
 
 # removing the installed packages
 sudo apt-get remove nodejs

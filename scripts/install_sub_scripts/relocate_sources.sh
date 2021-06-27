@@ -19,6 +19,7 @@ then
   if [ "$controller_answer" != "${controller_answer#[Yy]}" ]
   then
     /bin/cp -rf /home/pi/Desktop/workspace/rolling-shutter-homekit-controller/src/controller/*.py /home/pi/rolling-shutter-controller/controller
+    /bin/cp -rf /home/pi/Desktop/workspace/rolling-shutter-homekit-controller/src/controller/*.position /home/pi/rolling-shutter-controller/controller
   fi
 else
      echo "Creating directory and copying first version."
@@ -27,5 +28,6 @@ else
   mkdir /home/pi/rolling-shutter-controller/homekit
 
   cp /home/pi/Desktop/workspace/rolling-shutter-homekit-controller/src/controller/*.py /home/pi/rolling-shutter-controller/controller
+  cp /home/pi/Desktop/workspace/rolling-shutter-homekit-controller/src/controller/*.position /home/pi/rolling-shutter-controller/controller
   cp /home/pi/Desktop/workspace/rolling-shutter-homekit-controller/src/homekit-plugin/* /home/pi/rolling-shutter-controller/homekit
 fi
