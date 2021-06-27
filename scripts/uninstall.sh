@@ -25,6 +25,6 @@ sudo rm /etc/systemd/system/controller.service
 sudo rm -rf /home/pi/rolling-shutter-controller
 
 # removing the installed packages
-sudo apt-get remove nodejs
-sudo apt-get remove npm
+#sudo apt-get remove nodejs
+#sudo apt-get remove npm
 sudo apt-get remove rpi.gpio
