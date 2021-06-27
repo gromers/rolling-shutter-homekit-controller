@@ -21,6 +21,11 @@ sh ./install_sub_scripts/packages.sh
 # copies the checked out source to a specific location in the ~/
 sh ./install_sub_scripts/relocate_sources.sh
 
+cwd=$(pwd)
+cd /home/pi/rolling-shutter-controller/homekit
+sudo npm install
+cd $cdw
+
 # creates the services and enables them
 sh ./install_sub_scripts/create_services.sh
 
