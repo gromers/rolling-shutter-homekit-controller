@@ -17,12 +17,24 @@ class Homekit {
 
     this.name = config.defaultName;
     this.position = 100;
+    this.targetPosition = -1;
     this.state = true;
 
     this.bus = bus;
     this.bus.on('new_current_position', (value) => {
       this.position = +value;
+
+      // In the startup fase, a sync message was sent. If target wasn't set, we do it now. Otherwise we could 
+      // get funky values when the state is requested.
+      if (this.targetPosition === -1) {
+        this.targetPosition = this.position;
+      }
+      
+      // Determine if we are active based upon the requested vs the current position
+      this.state = this.position !== this.targetPosition;
+
       this.windowCoveringService.getCharacteristic(Characteristic.CurrentPosition).setValue(this.position);
+      this.windowCoveringService.getCharacteristic(Characteristic.On).setValue(this.state);
     });
   }
 
@@ -49,11 +61,11 @@ class Homekit {
       });
     this.windowCoveringService.getCharacteristic(Characteristic.TargetPosition)
       .on(CharacteristicEventTypes.GET, (callback) => {
-        this.logger.info(` > Request for the target position        | ${this.position}`);
-        callback(undefined, this.position);
+        this.logger.info(` > Request for the target position         | ${this.targetPosition}`);
+        callback(undefined, this.targetPosition);
       })
       .on(CharacteristicEventTypes.SET, (value, callback) => {
-        this.state = value > this.position;
+        this.targetPosition = value;
         this.bus.emit('new_target_position', value);
         callback();
       });

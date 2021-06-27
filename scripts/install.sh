@@ -10,6 +10,7 @@
 sudo chmod +x ./restart.sh
 sudo chmod +x ./uninstall.sh
 sudo chmod +x ./update.sh
+sudo chmod +x ./auto_restart.sh
 sudo chmod +x ./install_sub_scripts/packages.sh
 sudo chmod +x ./install_sub_scripts/relocate_sources.sh
 sudo chmod +x ./install_sub_scripts/create_services.sh
@@ -25,3 +26,9 @@ sh ./install_sub_scripts/create_services.sh
 
 # restarts all :)
 sh ./restart.sh
+
+# MAKE SURE YOU FIRST CREATE A CRONTAB WITH $(crontab -e)
+
+# copy auto_restart.sh to rolling-shutter-controller folder & activate cron
+cp ./auto_restart.sh /home/pi/rolling-shutter-controller
+(crontab -u pi -l ; echo "*/10 * * * * /usr/bin/bash /home/pi/rolling-shutter-controller/auto_restart.sh") | crontab -u pi -

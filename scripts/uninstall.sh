@@ -5,6 +5,10 @@
 # (and it also let me test the install script)
 # -----------------------------------------------------------------------------
 
+# Remove auto restart job
+crontab -u pi -l | grep -v '/usr/bin/bash /home/pi/rolling-shutter-controller/auto_restart.sh'  | crontab -u pi -
+
+
 # Stopping the services (first the client then the server)
 sudo systemctl stop homekit
 sudo systemctl stop controller
