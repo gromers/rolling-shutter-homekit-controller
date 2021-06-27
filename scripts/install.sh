@@ -24,7 +24,7 @@ sh ./install_sub_scripts/relocate_sources.sh
 cwd=$(pwd)
 cd /home/pi/rolling-shutter-controller/homekit
 sudo npm install
-cd $cdw
+cd $cwd
 
 # creates the services and enables them
 sh ./install_sub_scripts/create_services.sh

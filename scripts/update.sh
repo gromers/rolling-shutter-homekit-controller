@@ -21,7 +21,7 @@ sleep 15
 cwd=$(pwd)
 cd /home/pi/rolling-shutter-controller/homekit
 sudo npm install
-cd $cdw
+cd $cwd
 
 # restarts all :)
 sh ./restart.sh
