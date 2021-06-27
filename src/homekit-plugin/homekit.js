@@ -14,7 +14,7 @@ class Homekit {
 
     this.accessory = new Accessory('Roller Shutter', accessoryUuid);
     this.windowCoveringService = new Service.WindowCovering('Roller Shutter');
-    
+
     this.name = config.defaultName;
     this.position = 100;
     this.state = true;
@@ -49,10 +49,11 @@ class Homekit {
       });
     this.windowCoveringService.getCharacteristic(Characteristic.TargetPosition)
       .on(CharacteristicEventTypes.GET, (callback) => {
-        this.logger.info(` > Request for the current position        | ${this.position}`);
+        this.logger.info(` > Request for the target position        | ${this.position}`);
         callback(undefined, this.position);
       })
       .on(CharacteristicEventTypes.SET, (value, callback) => {
+        this.state = value < this.position;
         this.bus.emit('new_target_position', value);
         callback();
       });
