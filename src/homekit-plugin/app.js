@@ -7,11 +7,11 @@ logger.info('# starting the plugin');
 
 const bus = new Bus();
 const homekit = new Homekit(logger, bus);
-const controller = new Controller(logger, bus);
+//const controller = new Controller(logger, bus);
 
-function reconnect() {
-  controller.initialize();
-}
+// function reconnect() {
+//   controller.initialize();
+// }
 
 bus
   .on('new_target_position', (val) => {
@@ -32,9 +32,8 @@ bus
   })
   .on('controller_disconnected', () => {
     logger.info('@event: The controller disconnected');
-    
     // Test if a reconnect once is sufficient to reconnect again, oh and giv the controller some time 
-    setTimeout(reconnect, 10000);
+    // setTimeout(reconnect, 10000);
   })
   .on('unsupported_message', (message) => {
     logger.info(`@event: Got an unsupported message from the controller ${message}`);
@@ -50,5 +49,5 @@ homekit.initialize();
 homekit.publish();
 
 // setup the controller side
-controller.registerListeners();
-controller.initialize();
+//controller.registerListeners();
+//controller.initialize();
